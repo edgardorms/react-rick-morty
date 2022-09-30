@@ -1,5 +1,4 @@
 import CharacterList from "./Components/CharacterList";
-import Character from "./Components/Character";
 
 function App() {
   return (

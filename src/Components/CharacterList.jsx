@@ -4,12 +4,32 @@ import Character from "./Character.jsx";
 function NavPage(props) {
   return (
     <div className="d-flex justify-content-between align-items-center">
-      <p>Page: {props.page} </p>
       <button
         className="btn btn-primary btn-sm"
-        onClick={() =>{props.setPage(props.page+1)} }
+        onClick={() => { 
+          if (props.page <= 1) {
+            props.setPage(props.page + 41);
+          } else {
+            props.setPage(props.page - 1);
+          }
+        }}
       >
-        Page: {props.page+1}
+        Page: {props.page - 1}
+      </button>
+
+      <p>Page: {props.page} </p>
+
+      <button
+        className="btn btn-primary btn-sm"
+        onClick={() => {
+          if (props.page === 42) {
+            props.setPage(props.page === 1);
+          } else {
+            props.setPage(props.page + 1);
+          }
+        }}
+      >
+        Page: {props.page + 1}
       </button>
     </div>
   );
@@ -32,7 +52,7 @@ function CharacterList() {
 
   return (
     <div className="container">
-      <NavPage page={page} setPage={setPage}/>
+      <NavPage page={page} setPage={setPage} />
       <div className="row">
         {characters.map((character) => {
           return (
@@ -42,7 +62,7 @@ function CharacterList() {
           );
         })}
       </div>
-      <NavPage page={page} setPage={setPage}/>
+      <NavPage page={page} setPage={setPage} />
     </div>
   );
 }
